@@ -1,0 +1,255 @@
+main {
+  display: grid;
+  grid-template-columns: 325px auto 1fr auto 325px;
+  grid-template-areas: "lte hrl stn hrr info";
+  gap: 0 10px;
+  margin: 0 15px 0 15px;
+}
+
+/* grid-area */
+#lecture {
+  grid-area: lte;
+}
+main > hr:first-of-type {
+  grid-area: hrl;
+}
+#catarts {
+  grid-area: stn;
+}
+main > hr:last-of-type {
+  grid-area: hrr;
+}
+#info {
+  grid-area: info;
+}
+
+main > hr:first-of-type,
+main > hr:last-of-type {
+  border: 1px solid #dcdcdc;
+  border-radius: 3px;
+}
+
+#catarts {
+  /* outside */
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 10px 0;
+  /* inside */
+  gap: 20px 0;
+}
+
+#catarts > div {
+  /* outside */
+  border: 0.2em solid #f7f7f9;
+  border-radius: 1px;
+  /* inside */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 8px;
+  padding: 0 10px 10px 10px;
+}
+
+#catarts > div > h2 {
+  flex-basis: 100%;
+  text-decoration: underline;
+}
+
+#catarts > div > article {
+  box-shadow: 0 3px 2px 0 rgba(178, 178, 178, 0.35);
+}
+
+#catarts > div > article:nth-of-type(n + 2) {
+  display: flex;
+  flex-direction: column;
+}
+
+#catarts > div > article:first-of-type {
+  width: 100%;
+}
+
+#catarts > div > article:nth-of-type(n + 2) {
+  flex: 1 1 30%;
+}
+
+#catarts > div > article > h5,
+#catarts > div > article > h4,
+#catarts > div > article > p {
+  text-align: center;
+  margin: 0;
+}
+#catarts > div > article > h4 {
+  padding: 8px 10px 15px 10px;
+}
+
+#catarts > div > article:first-of-type p {
+  padding-bottom: 10px;
+}
+
+#catarts > div > article > h5 {
+  padding: 5px 2px 3px 2px;
+}
+
+#catarts > div > article:nth-of-type(n + 1) {
+  border: 1px solid #d7d7d7;
+}
+
+#catarts > div > article:first-of-type > img {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+}
+
+#catarts > div > article:nth-of-type(n + 2) > img {
+  width: 100%;
+  max-height: 115px;
+}
+
+#catarts > div > article:hover {
+  background-color: #d7d7d7;
+}
+
+#lecture,
+#info {
+  /* ouside */
+  /* inside */
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  padding: 0 5px 0 5px;
+}
+
+#lecture > article,
+#info > article {
+  /* inside behavior*/
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border: 1px solid #d7d7d7;
+  box-shadow: 0 4px 5px 0 rgba(178, 178, 178, 0.55);
+}
+
+#lecture > h2,
+#info > h2 {
+  border-radius: 2px;
+  height: 50px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+#lecture > h2 {
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+#lecture > h2 > p {
+  color: #0c5460;
+}
+
+#info > h2 {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+#info > h2 > p {
+  color: #155724;
+}
+
+#lecture > article > p,
+#info > article > p {
+  grid-row: 1;
+  text-align: center;
+  padding: 0 5px 0 5px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#lecture > article > img,
+#info > article > img {
+  grid-row: 2;
+  width: 100%;
+  border-top: 1px solid #d7d7d7;
+}
+
+#info > article span {
+  color: red;
+}
+
+@media only screen and (max-width: 1280px) {
+  main {
+    grid-template-columns: 280px auto 1fr auto 280px;
+  }
+}
+
+@media only screen and (max-width: 1070px) {
+  main > hr:first-of-type {
+    display: none;
+  }
+  main > hr:last-of-type {
+    display: none;
+  }
+
+  main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: none;
+  }
+  /* grid area ne fonctionne pas donc j'utilise grid-column */
+  #catarts {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+
+  #lecture {
+    grid-column: 1/2;
+    grid-row: 2;
+  }
+
+  #info {
+    grid-column: 2/-1;
+    grid-row: 2;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  #catarts {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+
+  #lecture {
+    grid-column: 1/-1;
+    grid-row: 2;
+  }
+
+  #info {
+    grid-column: 1/-1;
+    grid-row: 3;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  #catarts > div > article:nth-of-type(n + 2) {
+    flex: 1 1 48%;
+  }
+
+  #info,
+  #lecture {
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #catarts > div > article:nth-of-type(n + 2) {
+    flex: 1 1 100%;
+  }
+  #catarts > div > article:nth-of-type(n + 2) > img {
+    width: 100%;
+    height: auto;
+    max-height: 330px;
+  }
+  #catarts > div > article > h5 {
+    padding: 8px 3px 5px 3px;
+  }
+}

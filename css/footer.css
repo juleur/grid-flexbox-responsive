@@ -1,0 +1,21 @@
+footer {
+	display: grid;
+	grid-template-columns: repeat(3, 325px);
+	justify-content: center;
+	gap: 0 90px;
+	padding: 0 10px 1px 10px;
+	background-color: #2d2d2d;
+}
+
+footer > div > p {
+	text-align: center;
+	color: #ddd;
+}
+
+@media only screen and (max-width: 1280px) {
+	footer { gap: 0 35px; }
+}
+
+@media only screen and (max-width: 1040px) {
+	footer { grid-template-columns: repeat(auto-fill, minmax(325px, 1fr)); }
+}
